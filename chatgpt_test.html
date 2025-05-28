@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>電光掲示板（上半分表示）</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* 電光掲示板を画面の上半分に配置 */
+    .top-half {
+      height: 50vh; /* 画面の縦の50% */
+      color: red;
+      font-size: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 2px solid red;
+      overflow: hidden;
+    }
+
+    .marquee {
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .scroll-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 10s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      from {
+        transform: translateX(0%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* 入力フォームは下半分に表示 */
+    .bottom-half {
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-color: #111;
+      color: white;
+    }
+
+    input[type="text"] {
+      font-size: 20px;
+      padding: 5px;
+      width: 60%;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 6px 12px;
+      margin-top: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 電光掲示板（上半分） -->
+  <div class="top-half">
+    <div class="marquee">
+      <div class="scroll-text" id="scrollText">ようこそ！電光掲示板へ！</div>
+    </div>
+  </div>
+
+  <!-- 入力フォーム（下半分） -->
+  <div class="bottom-half">
+    <form id="messageForm">
+      <input type="text" id="messageInput" placeholder="メッセージを入力してください" required>
+      <button type="submit">表示</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("messageForm");
+    const input = document.getElementById("messageInput");
+    const scrollText = document.getElementById("scrollText");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const message = input.value.trim();
+      if (message) {
+        scrollText.textContent = message;
+        scrollText.style.animation = "none";
+        scrollText.offsetHeight;
+        scrollText.style.animation = null;
+        input.value = "";
+      }
+    });
+  </script>
+
+</body>
+</html>
