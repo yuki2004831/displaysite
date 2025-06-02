@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>電光掲示板（上半分表示）</title>
+  <title>電光掲示板（全画面対応）</title>
   <style>
     html, body {
       margin: 0;
@@ -12,11 +12,10 @@
       font-family: 'Courier New', monospace;
     }
 
-    /* 電光掲示板を画面の上半分に配置 */
     .top-half {
-      height: 50vh; /* 画面の縦の50% */
+      height: 50vh;
       color: red;
-      font-size: 32px;
+      font-size: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -46,7 +45,6 @@
       }
     }
 
-    /* 入力フォームは下半分に表示 */
     .bottom-half {
       height: 50vh;
       display: flex;
@@ -66,7 +64,7 @@
     button {
       font-size: 20px;
       padding: 6px 12px;
-      margin-top: 10px;
+      margin: 10px;
       background-color: red;
       color: white;
       border: none;
@@ -76,42 +74,73 @@
     button:hover {
       background-color: darkred;
     }
+    .color {
+        color : blue;
+    }
+    .color2{
+        color : red;
+    }
   </style>
 </head>
 <body>
 
-  <!-- 電光掲示板（上半分） -->
+  <!-- 電光掲示板 -->
   <div class="top-half">
     <div class="marquee">
       <div class="scroll-text" id="scrollText">ようこそ！電光掲示板へ！</div>
     </div>
   </div>
 
-  <!-- 入力フォーム（下半分） -->
+  <!-- 入力フォーム + フルスクリーンボタン -->
   <div class="bottom-half">
     <form id="messageForm">
-      <input type="text" id="messageInput" placeholder="メッセージを入力してください" required>
-      <button type="submit">表示</button>
+      <input type="text" id="messageInput" placeholder="メッセージを入力してください" required><br>
+      <div id="color1">
+        <button type="button" onclick="addCss()">青色</button>
+      </div>
+      <div id="color2">
+        <button type="button" onclick="addCss2()">赤</button>
+      <div><br>
+        <button type="submit">表示</button>
+        <button type="button" onclick="goFullscreen()">全画面表示</button>
+      </div>
     </form>
   </div>
 
-  <script>
-    const form = document.getElementById("messageForm");
-    const input = document.getElementById("messageInput");
-    const scrollText = document.getElementById("scrollText");
+ <script>
+  const form = document.getElementById("messageForm");
+  const input = document.getElementById("messageInput");
+  const scrollText = document.getElementById("scrollText");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const message = input.value.trim();
-      if (message) {
-        scrollText.textContent = message;
-        scrollText.style.animation = "none";
-        scrollText.offsetHeight;
-        scrollText.style.animation = null;
-        input.value = "";
-      }
-    });
-  </script>
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const message = input.value.trim();
+    if (message) {
+      scrollText.textContent = message;
+      scrollText.style.animation = "none"; // アニメーションリセット
+      scrollText.offsetHeight;             // DOM強制再計算
+      scrollText.style.animation = null;
+      input.value = "";
+    }
+  });
+
+  function goFullscreen() {
+    const elem = document.querySelector('.top-half');  // ここをdocument.documentElementから変更
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    }
+  }
+ function addCss() {
+  scrollText.style.color = "blue";
+}
+function addCss2(){
+    scrollText.style.coler="red";
+}
+</script>
 
 </body>
 </html>
