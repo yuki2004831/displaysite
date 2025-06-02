@@ -96,8 +96,10 @@
     <form id="messageForm">
       <input type="text" id="messageInput" placeholder="メッセージを入力してください" required><br>
       <div id="color1">
+        点灯色:
         <button type="button" onclick="addCss()">青色</button>
         <button type="button" onclick="addCss2()">赤</button>
+        <button type="button" onclick="addCss3()">緑</button>
       </div>
       <br>
         <button type="submit">表示</button>
@@ -140,6 +142,9 @@
 
   function addCss2(){
     scrollText.style.color = "red";
+  }
+  function addCss3(){
+    scrollText.style.color = "green";
   }
 
 </script>
