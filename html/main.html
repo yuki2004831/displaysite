@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css" />
-    <script src="script.js"></script>
+    
     <title>Document</title>
 </head>
 <body>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
    <div class="top-half">
     <div class="marquee">
       <div class="scroll-text" id="scrollText">ようこそ！電光掲示板へ！</div>
@@ -20,16 +21,22 @@
       <input type="text" id="messageInput" placeholder="メッセージを入力してください" required><br>
       <div id="color1">
         点灯色:
-        <button type="button" onclick="addCss()">青色</button>
-        <button type="button" onclick="addCss2()">赤</button>
-        <button type="button" onclick="addCss3()">緑</button>
-        <button type="button" onclick="addCss4()">黄色</button>
+        <button type="button" onclick="addCss()" class="blue">青色</button>
+        <button type="button" onclick="addCss2()" >赤</button>
+        <button type="button" onclick="addCss3()" class="green">緑</button>
+        <button type="button" onclick="addCss4()" class="yellow">黄色</button>
       </div>
+      <button onclick="changeFont('serif')" class="font-change-target font-serif">Serif に変更</button>
+      <button onclick="changeFont('monospace')" class="font-change-target font-mono">Monospace に変更</button>
+      <button onclick="changeFont('DotGothic16')" class="font-change-target font-dot">ドットに変更</button>
+
+
       <br>
         <button type="submit">表示</button>
         <button type="button" onclick="goFullscreen()">全画面表示</button>
       </div>
     </form>
   </div>
+  <script src="../js/script.js"></script>
 </body>
 </html>

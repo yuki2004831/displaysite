@@ -73,7 +73,7 @@ html, body {
     }
 
     button:hover {
-      background-color: darkred;
+      background-color: rgb(48, 48, 48);
     }
     .color {
         color : blue;
@@ -81,3 +81,44 @@ html, body {
     .color2{
         color : red;
     }
+    .blue{
+      font-size: 20px;
+      padding: 6px 12px;
+      margin: 10px;
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .green{
+      font-size: 20px;
+      padding: 6px 12px;
+      margin: 10px;
+      background-color: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .yellow{
+      font-size: 20px;
+      padding: 6px 12px;
+      margin: 10px;
+      background-color: yellow;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  .font-serif {
+  font-family: serif;
+  }
+
+.font-mono {
+  font-family: monospace;
+}
+
+/* Google Font の例: DotGothic16 を先に読み込んでおく */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+.font-dot {
+  font-family: 'DotGothic16', sans-serif;
+}

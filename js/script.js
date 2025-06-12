@@ -24,6 +24,17 @@ const form = document.getElementById("messageForm");
       elem.msRequestFullscreen();
     }
   }
+  document.addEventListener("fullscreenchange", function () {
+  const scrollText = document.getElementById("scrollText");
+  if (document.fullscreenElement) {
+    // 全画面ON → フォントサイズ大きく
+    scrollText.style.fontSize = "256px";  // 好きなサイズに
+  } else {
+    // 全画面OFF → 元に戻す
+    scrollText.style.fontSize = "128px";  // 通常サイズに戻す
+  }
+});
+  
 
   function addCss() {
     scrollText.style.color = "blue";
@@ -37,4 +48,8 @@ const form = document.getElementById("messageForm");
   }
   function addCss4(){
     scrollText.style.color = "yellow";
+  }
+  function changeFont(fontName) {
+  const scrollText = document.getElementById("scrollText");
+  scrollText.style.fontFamily = fontName;
   }
